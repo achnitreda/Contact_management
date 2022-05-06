@@ -6,8 +6,12 @@
     
     public function index(){
       
+      if(isLoggedIn()){
+        redirect('contacts');
+      }
+      
       $data = [
-        'title' => 'CMS',
+        'title' => 'ContactManager',
         'description'=> 'Contact Management System buit on AchrMVC PHP framework'
       ];
      
@@ -21,4 +25,5 @@
 
       $this->view('pages/about', $data);
     }
+
   }

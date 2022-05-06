@@ -1,3 +1,5 @@
+# by default go to the index not showing app and public folders
+
 <IfModule mod_rewrite.c>
   RewriteEngine on
   RewriteRule ^$ public/ [L]

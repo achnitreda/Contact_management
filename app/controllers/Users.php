@@ -26,7 +26,9 @@
 
         // Validate Email
         if(empty($data['email'])){
-          $data['email_err'] = 'Pleae enter email';
+          $data['email_err'] = 'Please enter email';
+        } elseif(!preg_match("/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/",$data['email'])){
+          $data['email_err'] = 'Please enter a valid email';
         } else {
           // Check email
           if($this->userModel->findUserByEmail($data['email'])){
@@ -36,19 +38,23 @@
 
         // Validate Name
         if(empty($data['name'])){
-          $data['name_err'] = 'Pleae enter name';
+          $data['name_err'] = 'Please enter name';
+        }else {
+          if(!preg_match("/^([a-zA-Z' ]{3,}+)$/",$data['name'])){
+            $data['name_err'] = 'Please enter a valid name';
+          }
         }
 
         // Validate Password
         if(empty($data['password'])){
-          $data['password_err'] = 'Pleae enter password';
+          $data['password_err'] = 'Please enter password';
         } elseif(strlen($data['password']) < 6){
           $data['password_err'] = 'Password must be at least 6 characters';
         }
 
         // Validate Confirm Password
         if(empty($data['confirm_password'])){
-          $data['confirm_password_err'] = 'Pleae confirm password';
+          $data['confirm_password_err'] = 'Please confirm password';
         } else {
           if($data['password'] != $data['confirm_password']){
             $data['confirm_password_err'] = 'Passwords do not match';
@@ -110,7 +116,7 @@
 
         // Validate Email
         if(empty($data['email'])){
-          $data['email_err'] = 'Pleae enter email';
+          $data['email_err'] = 'Please enter email';
         }
 
         // Validate Password
@@ -164,7 +170,7 @@
       $_SESSION['user_id'] = $user->id;
       $_SESSION['user_email'] = $user->email;
       $_SESSION['user_name'] = $user->name;
-      redirect('pages/index');
+      redirect('contacts');
     }
 
     public function logout(){
@@ -175,11 +181,4 @@
       redirect('users/login');
     }
 
-    public function isLoggedIn(){
-      if(isset($_SESSION['user_id'])){
-        return true;
-      } else {
-        return false;
-      }
-    }
   }

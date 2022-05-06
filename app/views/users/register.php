@@ -5,15 +5,15 @@
     <div class="card card-body bg-light mt-5">
       <h2>Create An Account</h2>
       <p>Please fill this form to register with us</p>
-      <form action="<?php echo URLROOT; ?>/users/register" method="post">
+      <form action="<?php echo URLROOT; ?>/users/register" method="post" id="form">
         <div class="form-group">
             <label>Name:<sup>*</sup></label>
-            <input type="text" name="name" class="form-control form-control-lg <?php echo (!empty($data['name_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['name']; ?>">
+            <input type="text" name="name"  class="form-control form-control-lg <?php echo (!empty($data['name_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['name']; ?>">
             <span class="invalid-feedback"><?php echo $data['name_err']; ?></span>
         </div> 
         <div class="form-group mt-1">
             <label>Email Address:<sup>*</sup></label>
-            <input type="email" name="email" class="form-control form-control-lg <?php echo (!empty($data['email_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['email']; ?>">
+            <input type="text" name="email" class="form-control form-control-lg <?php echo (!empty($data['email_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['email']; ?>">
             <span class="invalid-feedback"><?php echo $data['email_err']; ?></span>
         </div>    
         <div class="form-group mt-1">
@@ -38,5 +38,4 @@
       </form>
     </div>
   </div>
-  
 <?php require APPROOT . '/views/inc/footer.php'; ?>
